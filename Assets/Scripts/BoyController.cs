@@ -44,6 +44,18 @@ public class BoyController : MonoBehaviour
         animator.SetFloat("MoveX", lookDirection.x);
         animator.SetFloat("MoveY", lookDirection.y);
         animator.SetFloat("Speed", DPos.magnitude);
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2D.position + Vector2.up * 0.5f,
+                lookDirection, 1f);
+
+            if (hit.collider != null)
+            {
+                Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
+            }
+
+        }
     }
 
     private void FixedUpdate()
