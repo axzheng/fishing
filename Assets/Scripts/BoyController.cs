@@ -11,9 +11,6 @@ public class BoyController : MonoBehaviour
     float DVertical;
     float speed;
 
-    float screenWidth;
-    float screenHeight;
-
     Vector2 lookDirection = new Vector2(0, -1);
 
     // Start is called before the first frame update
@@ -23,9 +20,6 @@ public class BoyController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         speed = 2f;
-
-        screenWidth = 4.2f;
-        screenHeight = 2.3f;
     }
 
     // Update is called once per frame
@@ -64,9 +58,6 @@ public class BoyController : MonoBehaviour
 
         pos.x += speed * DHorizontal * Time.deltaTime;
         pos.y += speed * DVertical * Time.deltaTime;
-
-        pos.x = Mathf.Clamp(pos.x, -screenWidth, screenWidth);
-        pos.y = Mathf.Clamp(pos.y, -screenHeight, screenHeight);
 
         rigidbody2D.position = pos;
     }
