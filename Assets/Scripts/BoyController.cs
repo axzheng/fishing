@@ -42,7 +42,7 @@ public class BoyController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             RaycastHit2D hit = Physics2D.Raycast(rigidbody2D.position + Vector2.up * 0.5f,
-                lookDirection, 1f);
+                lookDirection, 1f, LayerMask.GetMask("Interactive", "Interactive Back"));
 
             if (hit.collider != null)
             {
