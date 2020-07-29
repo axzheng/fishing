@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoyController : MonoBehaviour
 {
@@ -50,6 +51,18 @@ public class BoyController : MonoBehaviour
             }
 
         }
+
+        //loads next scene
+        if(rigidbody2D.position.y < -4.5f)
+        {
+            LoadNextScene();
+        }
+    }
+
+    private static void LoadNextScene()
+    {
+        int currentscene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentscene + 1);
     }
 
     private void FixedUpdate()
