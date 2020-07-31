@@ -7,6 +7,7 @@ public class BoyController : MonoBehaviour
 {
     Rigidbody2D rigidbody2D;
     Animator animator;
+    [SerializeField] Animator RoomChanger;
 
     float DHorizontal;
     float DVertical;
@@ -63,5 +64,7 @@ public class BoyController : MonoBehaviour
 
         rigidbody2D.position = pos;
     }
+
+    
 
 }
