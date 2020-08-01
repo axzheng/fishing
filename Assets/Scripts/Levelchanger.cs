@@ -22,15 +22,13 @@ public class Levelchanger : MonoBehaviour
     public void LoadPrevScene()
     {
         prevscene = currentscene;
-        currentscene -= 1;
-        SceneManager.LoadScene(currentscene);
+        SceneManager.LoadScene(currentscene - 1);
     }
 
     public void LoadNextScene()
     {
         prevscene = currentscene;
-        currentscene += 1;
-        SceneManager.LoadScene(currentscene);
+        SceneManager.LoadScene(currentscene + 1);
     }
 
 }
