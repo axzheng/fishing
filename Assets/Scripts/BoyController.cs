@@ -7,13 +7,12 @@ public class BoyController : MonoBehaviour
 {
     Rigidbody2D rigidbody2D;
     Animator animator;
-    [SerializeField] Animator RoomChanger;
 
     float DHorizontal;
     float DVertical;
     float speed;
 
-    Vector2 lookDirection = new Vector2(0, -1);
+    public Vector2 lookDirection = new Vector2(0, -1);
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +20,16 @@ public class BoyController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        //set speed
         speed = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //boy movement
+        
+            
         DHorizontal = Input.GetAxis("Horizontal");
         DVertical = Input.GetAxis("Vertical");
 
@@ -40,7 +43,9 @@ public class BoyController : MonoBehaviour
         animator.SetFloat("MoveX", lookDirection.x);
         animator.SetFloat("MoveY", lookDirection.y);
         animator.SetFloat("Speed", DPos.magnitude);
+        
 
+        //raycasting
         if (Input.GetKeyDown(KeyCode.X))
         {
             RaycastHit2D hit = Physics2D.Raycast(rigidbody2D.position + Vector2.up * 0.5f,
@@ -52,6 +57,8 @@ public class BoyController : MonoBehaviour
             }
 
         }
+        //raycasting
+
 
     }
 
@@ -65,6 +72,5 @@ public class BoyController : MonoBehaviour
         rigidbody2D.position = pos;
     }
 
-    
 
 }

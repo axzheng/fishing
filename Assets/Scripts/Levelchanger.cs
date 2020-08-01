@@ -5,15 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class Levelchanger : MonoBehaviour
 {
+    public static int currentscene;
+    public static int prevscene = -1;
+    Animator animator;
+
+
+    public virtual void Start()
+    {
+
+        animator = GetComponent<Animator>();
+
+        currentscene = SceneManager.GetActiveScene().buildIndex;
+
+    }
+
     public void LoadPrevScene()
     {
-        int currentscene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentscene - 1);
+        prevscene = currentscene;
+        currentscene -= 1;
+        SceneManager.LoadScene(currentscene);
     }
 
     public void LoadNextScene()
     {
-        int currentscene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentscene + 1);
+        prevscene = currentscene;
+        currentscene += 1;
+        SceneManager.LoadScene(currentscene);
     }
+
 }
