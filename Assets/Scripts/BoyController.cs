@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class BoyController : MonoBehaviour
@@ -43,7 +44,7 @@ public class BoyController : MonoBehaviour
         animator.SetFloat("MoveX", lookDirection.x);
         animator.SetFloat("MoveY", lookDirection.y);
         animator.SetFloat("Speed", DPos.magnitude);
-        
+
 
         //raycasting
         if (Input.GetKeyDown(KeyCode.X))
@@ -55,10 +56,18 @@ public class BoyController : MonoBehaviour
             {
                 Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
             }
+            switch (hit.collider.gameObject.name)
+            {
+                case "chair":
+                    SceneManager.LoadScene(2, LoadSceneMode.Additive);
+                    break;
+                case "desk":
+                    SceneManager.UnloadSceneAsync(2);
+                    break;
 
+            }
+            //raycasting
         }
-        //raycasting
-
 
     }
 

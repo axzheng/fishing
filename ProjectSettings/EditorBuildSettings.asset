@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kitchen.unity
     guid: dfaa47a4094164ca697afa567102df7e
+  - enabled: 1
+    path: Assets/Scenes/ChairGame.unity
+    guid: d9cc69bc43de1447796fd341c16e2ba6
   m_configObjects: {}
