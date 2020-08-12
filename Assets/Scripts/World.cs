@@ -22,7 +22,7 @@ public class World : Levelchanger
         }
         if(currentscene == 1 && prevscene == 0)
         {
-            player.transform.position = new Vector2(-3.5f, 0f);
+            player.transform.position = new Vector2(-4f, -2.9f);
             player.lookDirection = new Vector2(1, 0);
         }
         if(currentscene == 1 && prevscene == 2)
