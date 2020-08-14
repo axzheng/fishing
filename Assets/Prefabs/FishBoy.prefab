@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1518e7e66926f447cab8774d6cc87be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookDirection: {x: 0, y: -1}
 --- !u!95 &2772509457859244003
 Animator:
   serializedVersion: 3

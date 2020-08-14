@@ -1316,18 +1316,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4276276, y: 2.8031416}
   m_EdgeRadius: 0
---- !u!114 &1852538709 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 79994274, guid: 28b7e077e76dc4b199ce94a3d1f77cb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 588064850}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1783b21138bd04adf8119119874c0ebb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2772509459513846676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1390,20 +1378,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2772509457859244002, guid: 30bf4d979e3254990a07137767062683,
-        type: 3}
-      propertyPath: levelchanger
-      value: 
-      objectReference: {fileID: 1852538709}
     - target: {fileID: 2772509457859244005, guid: 30bf4d979e3254990a07137767062683,
         type: 3}
       propertyPath: m_Name
       value: FishBoy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772509457859244007, guid: 30bf4d979e3254990a07137767062683,
-        type: 3}
-      propertyPath: m_Simulated
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30bf4d979e3254990a07137767062683, type: 3}

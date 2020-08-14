@@ -15,6 +15,8 @@ public class BoyController : MonoBehaviour
 
     public Vector2 lookDirection = new Vector2(0, -1);
 
+    bool firsthit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,28 +25,32 @@ public class BoyController : MonoBehaviour
 
         //set speed
         speed = 2f;
+
+        firsthit = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         //boy movement
-        
-            
-        DHorizontal = Input.GetAxis("Horizontal");
-        DVertical = Input.GetAxis("Vertical");
-
-        Vector2 DPos = new Vector2(DHorizontal, DVertical);
-        if (!Mathf.Approximately(DPos.x, 0f) || !Mathf.Approximately(DPos.y, 0f))
+        //only happens if firsthit, i.e. boy has NOT opened minigame
+        if (firsthit)
         {
-            lookDirection = DPos;
-            lookDirection.Normalize();
+            DHorizontal = Input.GetAxis("Horizontal");
+            DVertical = Input.GetAxis("Vertical");
+
+            Vector2 DPos = new Vector2(DHorizontal, DVertical);
+            if (!Mathf.Approximately(DPos.x, 0f) || !Mathf.Approximately(DPos.y, 0f))
+            {
+                lookDirection = DPos;
+                lookDirection.Normalize();
+            }
+
+            animator.SetFloat("MoveX", lookDirection.x);
+            animator.SetFloat("MoveY", lookDirection.y);
+            animator.SetFloat("Speed", DPos.magnitude);
         }
-
-        animator.SetFloat("MoveX", lookDirection.x);
-        animator.SetFloat("MoveY", lookDirection.y);
-        animator.SetFloat("Speed", DPos.magnitude);
-
+        //boy movement
 
         //raycasting
         if (Input.GetKeyDown(KeyCode.X))
@@ -55,30 +61,46 @@ public class BoyController : MonoBehaviour
             if (hit.collider != null)
             {
                 Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
+
             }
             switch (hit.collider.gameObject.name)
             {
                 case "chair":
-                    SceneManager.LoadScene(2, LoadSceneMode.Additive);
-                    break;
-                case "desk":
-                    SceneManager.UnloadSceneAsync(2);
+                    ManageRelatedScene(2);
                     break;
 
             }
-            //raycasting
+            
         }
+        //raycasting
+    }
 
+    //loads/unloads the scene requested by FishBoy
+    private void ManageRelatedScene(int scene)
+    {
+        if (firsthit)
+        {
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            firsthit = false;
+        }
+        else
+        {
+            SceneManager.UnloadSceneAsync(scene);
+            firsthit = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        Vector2 pos = rigidbody2D.position;
+        if (firsthit)
+        {
+            Vector2 pos = rigidbody2D.position;
 
-        pos.x += speed * DHorizontal * Time.deltaTime;
-        pos.y += speed * DVertical * Time.deltaTime;
+            pos.x += speed * DHorizontal * Time.deltaTime;
+            pos.y += speed * DVertical * Time.deltaTime;
 
-        rigidbody2D.position = pos;
+            rigidbody2D.position = pos;
+        }
     }
 
 
